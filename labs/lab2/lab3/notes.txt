@@ -1,0 +1,51 @@
+notes for lab3
+study abstract class
+
+#include <iostream>
+
+class Animal {
+	
+	public:
+	Animal(int age);
+	int GetAge();
+	//Defines a pure virtual function
+	//This makes the function abstract, which forces all 
+	//subclass to implement it or also be abstract
+	//virtual void Speak()=0;
+
+	protected:
+	int age;
+};
+
+//Header file
+#include "Animal.h"
+
+// dog.h
+#include 'animal.h'
+#include <string>
+
+class Dog: public Animal{
+	
+	private:
+	std::string name;
+	public:
+	Dog(int age, std::string name);
+	std::string GetName();
+	//void Speak();
+}
+
+//dog.cpp
+#include "dog.cpp"
+dog::dog(int age, std::string name) : Animal(age)
+{
+	this->name =name;
+}
+std::string Dog::GetName()
+{
+	return this->name;
+}
+
+void Dog::Speak()
+{
+	std::cout <<"woof!"<<std::endl;
+}
